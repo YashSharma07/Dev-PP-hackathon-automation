@@ -33,4 +33,4 @@ try {
 })();
 
 
-console.log("Code will start soon");
+console.log("Amazon Automation will start soon");
