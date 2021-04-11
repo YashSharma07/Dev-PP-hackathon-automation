@@ -1,13 +1,13 @@
 const puppeteer = require('puppeteer');
 let tab;
 let search = "mouse";
-let price = "1000";
+let price = 1000;
     
 (async function(){
 
 try {
     //opens the browser
-    let browser = await puppeteer.launch({ headless : false , defaultViewport: null, args : ["--start-maximized"]});
+    let browser = await puppeteer.launch({ headless : false , defaultViewport: null, args : ["--start-maximized"], slowMo : 100});
 
     // get all pages and then choose the first tab
     let allpages = await browser.pages();
@@ -26,12 +26,12 @@ try {
 
     // choose the range
     if(price <= 1000){
-        await tab.waitForSelector("#p_36/1318503031", {visible : true})
-        await tab.click(".a-star-medium-4");
+        await tab.waitForSelector("[aria-labelledby='p_36-title'] li", {visible : true})
+        await tab.click("[aria-labelledby='p_36-title'] li");
     }
     else{
-        await tab.waitForSelector("#p_36/1318504031", {visible : true})
-        await tab.click(".a-star-medium-3");
+        await tab.waitForSelector("[aria-labelledby='p_36-title'] li:nth-child(2)", {visible : true})
+        await tab.click("[aria-labelledby='p_36-title'] li:nth-child(2)");
     }
         
 } catch (error) {
@@ -40,4 +40,5 @@ try {
 })();
 
 
-console.log("Amazon Automation will start soon");
+console.log("Amazon Automation will start soon...");
+
