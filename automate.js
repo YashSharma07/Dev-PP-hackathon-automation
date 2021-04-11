@@ -1,10 +1,10 @@
 const puppeteer = require('puppeteer');
 let tab;
 let search = "mouse";
-
-
+    
 (async function(){
 
+try {
     //opens the browser
     let browser = await puppeteer.launch({ headless : false , defaultViewport: null, args : ["--start-maximized"]});
 
@@ -26,7 +26,11 @@ let search = "mouse";
     // choose the range
     await tab.waitForSelector(".a-star-medium-4", {visible : true})
     await tab.click(".a-star-medium-4");
-});
+        
+} catch (error) {
+        console.log(error);
+    }
+})();
 
 
 console.log("Code will start soon");
