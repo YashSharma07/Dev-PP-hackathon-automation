@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 let tab;
 let search = "mouse";
+let price = "1000";
     
 (async function(){
 
@@ -24,8 +25,14 @@ try {
     await tab.click(".a-star-medium-4");
 
     // choose the range
-    await tab.waitForSelector(".a-star-medium-4", {visible : true})
-    await tab.click(".a-star-medium-4");
+    if(price <= 1000){
+        await tab.waitForSelector("#p_36/1318503031", {visible : true})
+        await tab.click(".a-star-medium-4");
+    }
+    else{
+        await tab.waitForSelector("#p_36/1318504031", {visible : true})
+        await tab.click(".a-star-medium-3");
+    }
         
 } catch (error) {
         console.log(error);
